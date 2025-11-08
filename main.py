@@ -2,24 +2,23 @@
 HW03 — Group anagrams using a dictionary.
 No type hints. Standard library only.
 """
-
 def _clean_letters(s):
     """Return lowercase letters from s (a-z)."""
-    # TODO Step 4: build a cleaned string with only letters
-    raise NotImplementedError
+    return ''.join(ch.lower() for ch in s if ch.isalpha())
 
 def _signature(s):
     """Return sorted lowercase-letter signature for s."""
-    # TODO Step 5: use _clean_letters, then sort characters and join
-    raise NotImplementedError
+    return ''.join(sorted(_clean_letters(s)))
 
 def group_anagrams(words):
     """Return dict: signature -> list of original words in input order."""
-    # TODO Steps 4–6: iterate words, compute key, append to list in dict
-    # TODO Step 7: test with empty list and words with punctuation
-    # TODO Step 8: small improvements if needed
-    raise NotImplementedError
+    d = {}
+    for w in words:
+        key = _signature(w)
+        if key not in d:
+            d[key] = []
+        d[key].append(w)
+    return d
 
 if __name__ == "__main__":
-    # Optional: small manual check
     pass
